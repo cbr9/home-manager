@@ -33,6 +33,7 @@ in {
         lib.platforms.linux)
     ];
 
+    home.packages = [cfg.package];
     systemd.user.services.nextcloud-client = {
       Unit = {
         Description = "Nextcloud Client";
