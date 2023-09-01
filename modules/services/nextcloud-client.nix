@@ -1,11 +1,6 @@
 { config, lib, pkgs, ... }:
-
 with lib;
-
-let
-
-  cfg = config.services.nextcloud-client;
-
+let cfg = config.services.nextcloud-client;
 in {
   options = {
     services.nextcloud-client = {
@@ -32,6 +27,8 @@ in {
       (lib.hm.assertions.assertPlatform "services.nextcloud-client" pkgs
         lib.platforms.linux)
     ];
+
+    home.packages = [ cfg.package ];
 
     systemd.user.services.nextcloud-client = {
       Unit = {
